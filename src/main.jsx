@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { TermCard } from './TermCard';
+import { TermList } from './TermList';
 import './index.css';
 
 const form = document.getElementById('add-description');
@@ -7,7 +7,7 @@ const descriptionList = document.getElementById('description-list');
 
 const reactRoot = createRoot(descriptionList);
 
-reactRoot.render(<TermCard />);
+reactRoot.render(<TermList />);
 
 form.addEventListener('submit', (event) => {
   // Отменяем поведение по умолчанию
