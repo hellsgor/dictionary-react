@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { TermCard } from './TermCard';
 import './TermList.css';
 
@@ -11,4 +12,14 @@ export const TermList = ({ terms }) => {
       ))}
     </ul>
   );
+};
+
+TermList.propTypes = {
+  terms: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string,
+    }),
+  ).isRequired,
 };
