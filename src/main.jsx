@@ -10,7 +10,12 @@ const descriptionList = document.getElementById('description-list');
 const reactRoot = createRoot(descriptionList);
 
 function syncTermList() {
-  reactRoot.render(<TermList terms={terms} />);
+  reactRoot.render(<TermList terms={terms} onDelete={deleteTerm} />);
+}
+
+function deleteTerm(id) {
+  terms = terms.filter((item) => item.id !== id);
+  syncTermList();
 }
 
 function addTerm(title, description) {
