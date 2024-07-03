@@ -2,15 +2,24 @@ import { createRoot } from 'react-dom/client';
 import { TermList } from './TermList';
 import './index.css';
 
-let terms = [];
-
 const form = document.getElementById('add-description');
 const descriptionList = document.getElementById('description-list');
 
 const reactRoot = createRoot(descriptionList);
 
+let terms = restoreTermList();
+
 function syncTermList() {
   reactRoot.render(<TermList terms={terms} onDelete={deleteTerm} />);
+  saveTermList(terms);
+}
+
+function restoreTermList() {
+  return localStorage.getItem('termList') ? JSON.parse(localStorage.getItem('termList')) : [];
+}
+
+function saveTermList() {
+  localStorage.setItem('termList', JSON.stringify(terms));
 }
 
 function deleteTerm(id) {
